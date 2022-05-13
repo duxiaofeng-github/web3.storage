@@ -3,8 +3,10 @@ import React, { useCallback } from 'react';
 
 import ZeroButton from 'ZeroComponents/button/button';
 import { trackEvent, events } from 'lib/countly';
+import Tooltip from 'ZeroComponents/tooltip/tooltip';
 
 export const ButtonVariant = {
+  GRAY: 'gray',
   DARK: 'dark',
   LIGHT: 'light',
   PURPLE: 'purple',
@@ -37,27 +39,29 @@ export const ButtonVariant = {
  * @param {ButtonProps & Partial<Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>>} props
  * @returns
  */
-const Button = ({ className, onClick, href, tracking, variant = ButtonVariant.DARK, children, ...props }) => {
+const Button = ({ className, tooltip, onClick, tracking, variant = ButtonVariant.DARK, children, ...props }) => {
   const onClickHandler = useCallback(
     event => {
       tracking &&
         trackEvent(tracking.event || events.CTA_LINK_CLICK, {
           ui: tracking.ui,
           action: tracking.action,
-          link: href || '',
+          link: props.href || '',
           ...(tracking.data || {}),
         });
       onClick && onClick(event);
     },
-    [href, onClick, tracking]
+    [props.href, onClick, tracking]
   );
 
-  return (
+  const btn = (
     // @ts-ignore Ignoring ZeroButton as it is not properly typed
     <ZeroButton {...props} className={clsx('button', variant, className)} onClick={onClickHandler}>
       {children}
     </ZeroButton>
   );
+
+  return tooltip ? <Tooltip content={tooltip}>{btn}</Tooltip> : btn;
 };
 
 export default Button;

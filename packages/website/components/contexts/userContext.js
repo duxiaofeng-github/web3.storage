@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 
 import { getInfo, getStorage } from 'lib/api.js';
 import { useAuthorization } from './authorizationContext.js';
+import AccountBlockedModal from 'components/account/accountBlockedModal/accountBlockedModal.js';
 
 /**
  * @typedef {Object} UserContextProps
@@ -43,7 +44,12 @@ export const UserProvider = ({ children, loadStorage }) => {
     enabled: isLoggedIn && loadStorage,
   });
 
-  return <UserContext.Provider value={{ ...data, storageData }}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ ...data, storageData }}>
+      <AccountBlockedModal hasAccountRestriction={data?.info?.tags['HasAccountRestriction']} />
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 /**
