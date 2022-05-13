@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.4.0](https://github.com/web3-storage/web3.storage/compare/website-v2.3.0...website-v2.4.0) (2022-05-13)
+
+
+### Features
+
+* Additional file upload button ([#1290](https://github.com/web3-storage/web3.storage/issues/1290)) ([9fafc83](https://github.com/web3-storage/web3.storage/commit/9fafc830b841da0dd6bd5319c77febaded232240))
+
+
+### Bug Fixes
+
+* Change hover over description for Queuing in individual file rows ([#1296](https://github.com/web3-storage/web3.storage/issues/1296)) ([04dafec](https://github.com/web3-storage/web3.storage/commit/04dafec1781bfd7c4741f36f028d9c4d8f357cab))
+* Default sort by should be newest to oldest ([#1295](https://github.com/web3-storage/web3.storage/issues/1295)) ([b0da078](https://github.com/web3-storage/web3.storage/commit/b0da078962d3715c66f29a013102aab2fd5d1cf4))
+* testimonial cards link behavior ([#1247](https://github.com/web3-storage/web3.storage/issues/1247)) ([67facbe](https://github.com/web3-storage/web3.storage/commit/67facbe08bd58d65da6367b3072caa13360fe5b3))
+
 ## [2.3.0](https://github.com/web3-storage/web3.storage/compare/website-v2.2.1...website-v2.3.0) (2022-04-26)
 
 
